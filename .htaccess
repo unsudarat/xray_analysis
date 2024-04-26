@@ -1,0 +1,29 @@
+
+<IfModule mod_headers.c>
+    Header always set Access-Control-Allow-Origin "*"
+</IfModule>
+
+<IfModule mod_rewrite.c>
+Options -Indexes
+RewriteEngine On
+RewriteBase /
+
+ErrorDocument 404 /404/
+ErrorDocument 403 /403/
+
+RewriteRule ^404/$ 404.php
+RewriteRule ^403/$ 403.php
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+RewriteRule ^login/$ login.php
+RewriteRule ^login$ /login/ [R]
+
+RewriteRule ^index/$ index.php
+RewriteRule ^index$ /index/ [R]
+
+RewriteRule ^analyze/$ analyze.php
+RewriteRule ^analyze$ /analyze/ [R]
+
+</IfModule>
